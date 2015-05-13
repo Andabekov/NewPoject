@@ -1,0 +1,73 @@
+<html>
+<head>
+	<title>Belka-TeamFormation</title>
+	<link rel="stylesheet" href="stylesheet.css">
+	<script src="jquery-1.8.2.min.js"></script>
+	<script src="displayMethods.js"></script>
+	<script src="main.js"></script>
+	<script>
+		function addPlayer(){
+
+			$.ajax({
+				url: "http://localhost:2001/addPlayer",
+				dataType: 'jsonp',
+				success: callback
+			});
+		}
+		
+		function callback(flag){
+			var searchName = location.search.substring(location.search.indexOf("name")+5, location.search.indexOf("id")-1);
+			var searchId = location.search.substring(location.search.indexOf("id")+3, location.search.indexOf("id")+4);
+			
+			if(location.search.indexOf("gameid")!=-1)
+				var searchGameId = location.search.substring(location.search.indexOf("gameid")+7);
+			else
+				var searchGameId = searchName;
+
+			var searchGameId = location.search.substring(location.search.indexOf("gameid")+7);
+			
+			playersNameArray[searchId] = searchName.toString();
+
+			if(flag.full) {
+				window.location="belka.html" + '?name='+ searchName + '?id='+ searchId + '?gameid=' + searchGameId;
+			} else
+				setTimeout(addPlayer, 5000);
+		}
+	</script>
+</head>
+<body>
+	<div id="container">
+		<p>
+			Welcome <span class="playerBottom">Abu</span>!
+		<br />
+			Please choose formation of your team:
+		<br />
+			Team 1: <span class="playerBottom">Abu</span>, <span class="playerTop">Ben</span>
+			<br />
+			Team 2: <span class="playerLeft">PC1</span>, <span class="playerRight">PC2</span>
+		</p>
+	</div>
+		<div style="text-align:center">
+			<div id="green">
+				<!--<div class="absDiv" id="topPlayer"></div>
+				<div class="absDiv" id="leftPlayer"></div>
+				<div class="absDiv" id="rightPlayer"></div>
+				<div class="absDiv" id="bottomPlayer"></div>-->
+
+				<h5>Name: <span class="playerTop">Ben</span></h5>
+				<img class="cardsOnTable" src="images/horisCards.png" /><br />
+
+				<h5>Name: <span class="playerTop">PC1</span> <span style="margin-left: 265px;">Name: <span class="playerTop">PC1</span></span></h5>
+				<img src="images/verticCards.png" style=""/>
+				
+				<img src="images/verticCards.png" style="margin-left: 240px;"/><br />
+				<img src="images/horisCards.png" />
+				<h5>Your Name: <span class="playerBottom">Abu</span></h5>
+				
+				
+			</div>
+			<br /><br />
+		</div>
+	
+</body>
+</html>

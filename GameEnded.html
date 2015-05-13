@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+	<title>Belka</title>
+	<link rel="stylesheet" href="stylesheet.css">
+	
+	<style>
+	</style>
+	
+	<script>
+		
+		function test(){
+			winnerTeam = 1;
+			team1score = location.search.substring(location.search.indexOf("t1score")+8, location.search.indexOf("t2score")-1);
+			team2score = location.search.substring(location.search.indexOf("t2score")+8);
+			alert(team1score);
+			alert(team2score);
+		}
+	
+	</script>
+</head>
+<body>
+
+	<h1 onclick="test();">Congratulations!</h1>
+
+</body>
+</html>

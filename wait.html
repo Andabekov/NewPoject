@@ -1,0 +1,49 @@
+<html>
+<head>
+	<title>Wait</title>
+	<link rel="stylesheet" href="stylesheet.css">
+	<script src="jquery-1.8.2.min.js"></script>
+	<script src="displayMethods.js"></script>
+	<script src="main.js"></script>
+	<script>
+		function addPlayer(){
+
+			$.ajax({
+				url: "http://localhost:2001/addPlayer",
+				dataType: 'jsonp',
+				success: callback
+			});
+		}
+		
+		function callback(flag){
+			var searchName = location.search.substring(location.search.indexOf("name")+5, location.search.indexOf("id")-1);
+			var searchId = location.search.substring(location.search.indexOf("id")+3, location.search.indexOf("id")+4);
+			
+			if(location.search.indexOf("gameid")!=-1)
+				var searchGameId = location.search.substring(location.search.indexOf("gameid")+7);
+			else
+				var searchGameId = searchName;
+
+			var searchGameId = location.search.substring(location.search.indexOf("gameid")+7);
+			
+			playersNameArray[searchId] = searchName.toString();
+
+			if(flag.full) {
+				window.location="belka.html" + '?name='+ searchName + '?id='+ searchId + '?gameid=' + searchGameId;
+			} else
+				setTimeout(addPlayer, 5000);
+		}
+		
+	</script>
+</head>
+<body onLoad="addPlayer();">
+<div id="container">
+	<h1>plaese wait...</h1>
+</div>
+</body>
+</html>
+
+
+
+
+

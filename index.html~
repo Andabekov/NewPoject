@@ -1,0 +1,127 @@
+<html>
+<head>
+	<title>Homepage</title>
+	<link rel="stylesheet" href="stylesheet.css">
+	<script src="jquery-1.8.2.min.js"></script>
+	<script src="displayMethods.js"></script>
+	<script src="main.js"></script>
+	<script>
+	
+	
+	
+		function checkForGames(){
+			$.ajax({
+					url: "http://localhost:2001/checkForGames",
+					dataType: 'jsonp',
+					success: accceptGameIds
+				});
+		}
+		
+		function accceptGameIds(gameIds){
+			$('#listOfGames').append('<option value ='+gameIds.gameId+'>'+gameIds.gameId+'</option>');
+		}
+
+		function startNewGame(){
+			if($("#usernameNew").val()=="")
+				{ alert("Please, fill in your name!"); }
+			else{
+				$.ajax({
+					url: "http://localhost:2001/setUpNewGame",
+					dataType: 'jsonp',
+					data:{ name: $("#usernameNew").val() },
+					success: callback
+				});
+			}
+		}
+		
+		function joinGame(){
+			if($("#usernameJoin").val()=="" | $("#listOfGames").val()=="default")
+				{ alert("please, fill in your name and choose the game you want to join!"); }
+			else{
+				$.ajax({
+					url: "http://localhost:2001/setUpNewGame",
+					dataType: 'jsonp',
+					data:{ name: $("#usernameJoin").val(), id: $("#listOfGames").val() },
+					success: callback2
+				});
+			}
+		}
+
+		function callback(gameId){
+			alert(gameId.name);
+			window.location="wait.html" + '?name=' + gameId.name + '?id=' + gameId.playerId + '?gameid=' + gameId.name;
+		}
+
+		function callback2(gameId){
+			alert(gameId.name+gameId.id);
+			window.location="wait.html" + '?name=' + gameId.name + '?id=' + gameId.playerId + '?gameid=' + gameId.gameId;
+		}
+	</script>
+</head>
+<body onLoad="checkForGames();">
+<div id="container">
+	<header id="top_header">
+		<h1>
+			<img class="suits" src="suits/club.ico"></img>
+			<img class="suits" src="suits/heart.ico"></img>
+			Welcome to the First official website of Card Game BELKA
+			<img class="suits" src="suits/spade.ico"></img>
+			<img class="suits" src="suits/diamond.ico"></img>
+		</h1>
+	</header>
+	
+	<nav id="nav_bar">
+		<ul>
+			<li class="nav_li"><a href="index.html">Home</a></li>
+			<li class="nav_li"><a href="rules.html">Rules</a></li>
+			<li class="nav_li"><a href="index.html">Contact Us</a></li>
+		</ul>
+	</nav>
+	
+	<section id="main_section">
+		<article>
+			<header>
+				<hgroup>
+					<h1>The story of Belka</h1>
+				</hgroup>
+			</header>
+			<p>The legend says that the game was brought by the British in the
+			late XIX century to Zhezkazgan (central Kazakhstan). Pursuing the exploration of deposits of copper ore, they
+			whiled away their free time playing card game Belote. The local people invented their own version, and so
+			there is Belka.
+			Nowadays, Belka is very popular game not only in Zhezkazgan, but all over the Kazakhstan.
+			Belka is unique and truly a national game of the Kazakhstan. The originality of
+			the game is the balance between the mathematical calculation, quick-wittedness and luck.</p>
+
+		</article>
+		<article>
+			<header>
+				<hgroup>
+					<h1>Play the Game</h1>
+				</hgroup>
+			</header>
+			<p>To start a new game, please type your name:</p>
+				<label>Name:</label> 
+				<input type="text" id="usernameNew"><br>
+				<button onClick="startNewGame()">Start</button>
+
+			<p>To join existing game, please type your name and choose the game you want to join:</p>
+				<label>Name:</label> 
+				<input type="text" id="usernameJoin"><br />
+				<label>Select game:</label>
+				<select id = "listOfGames">
+					<option value = "default">please select</option>
+				</select><br />
+				<button onClick="joinGame()">Join</button>
+		</article>
+	</section>
+	
+	<footer id="the_footer">
+		Copyright &copy Abu Andabekov 2012-2022
+	</footer>
+	
+</div>
+
+	
+</body>
+</html>

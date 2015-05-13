@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Belka</title>
+	<link rel="stylesheet" href="stylesheet.css">
+	<script src="jquery-1.8.2.min.js"></script>
+	<script src="displayMethods.js"></script>
+	<script src="main.js"></script>
+	<script>
+
+		function WebSocketTest(){
+			$.ajax({
+				url: "http://localhost:2001/startgame",
+				dataType: 'jsonp',
+				success: callback
+			});
+		}
+
+		function callback(){
+			//alert("fuck off websocket!");
+			player0=readName();
+			startGame();
+		}
+
+		function readName(){
+			var params = location.search.substr(location.search.indexOf("name")+5);
+			return params;
+		}
+		
+	</script>
+</head>
+<body onLoad="launcher();">
+	<div class="names" id="player0"></div>
+	<div class="names" id="player1"></div>
+	<div class="names" id="player2"></div>
+	<div class="names" id="player3"></div>
+<div id="leftSide">
+<h2>
+	Team I: <font id="team1"></font><br />
+	Team II: <font id="team2"></font><br /><br />
+	Current trump: <font id="currentTrump"></font> <br /><br />
+	Next move: <font id="nextMove"></font> <br /><br /><br />
+	Intermediate scores:<br /><br />
+	Team I: <font id="team1Points"></font><br />
+	Team II: <font id="team2Points"></font><br /><br />
+	Total scores:<br /><br />
+	Team I: <font id="team1Scores"></font>&nbsp;
+			<img class="sixes" src="cart_images/6heart.png"></img>&nbsp;
+			<img class="sixes" src="back.png"></img><br />
+	Team II: <font id="team2Scores"></font>&nbsp;
+			<img class="sixes" src="cart_images/6spade.png"></img>&nbsp;
+			<img class="sixes" src="back.png"></img><br />
+</h2>
+</div>
+</body>
+</html>

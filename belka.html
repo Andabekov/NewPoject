@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Belka</title>
+	<link rel="stylesheet" href="stylesheet.css">
+	<script src="jquery-1.8.2.min.js"></script>
+	<script src="displayMethods.js"></script>
+	<script src="main.js"></script>
+	<script>
+	var temp;
+		function WebSocketTest(){
+			var gameID = location.search.substring(location.search.indexOf("gameid")+7);
+
+			$.ajax({
+				url: "http://localhost:2001/startgame",
+				dataType: 'jsonp',
+				data: {gameid: gameID},
+				success: callback
+			});
+		}
+
+		function callback(players){
+
+			playerID=parseInt(location.search.substring(location.search.indexOf("id")+3, location.search.indexOf("gameid")-1));
+			playersNameArray[0] = players.name0; playersNameArray[1] = players.name1; 
+			playersNameArray[2] = players.name2; playersNameArray[3] = players.name3;
+
+			temp = JSON.parse(players.shuffle);
+
+			createCards();
+			createPlayers();
+			updateResults();
+			startGame();
+			
+			setInterval(checkForMove, 3000);
+		}
+		
+		// this function is called each 3 seconds to check if another player made the move or not
+		function checkForMove(){
+			gameID = location.search.substring(location.search.indexOf("gameid")+7);
+			playerID=parseInt(location.search.substring(location.search.indexOf("id")+3, location.search.indexOf("gameid")-1));
+			$.ajax({
+				url: "http://localhost:2001/checkForMove",
+				dataType: 'jsonp',
+				data: {gameid: gameID, playerid: playerID},
+				success: emptyFunction
+			});
+		}
+
+		// this function is called whenever move was made by another player
+		function setNextMove(param){
+			if(playerID!=param.prevPlayer){
+				currentPlayer=param.nextMove;
+				animateMove2(param.prevPlayer, param.playedCard);
+				updateResults();
+			}
+			
+		}
+		
+		// this function is called when no move was made by another player
+		function emptyFunction(){
+		}
+
+		/*window.onbeforeunload = function() { // why would u do this?! 
+			return "";
+		}*/
+
+	</script>
+</head>
+<body onLoad="launcher();">
+	<div class="names" id="player0"></div>
+	<div class="names" id="player1"></div>
+	<div class="names" id="player2"></div>
+	<div class="names" id="player3"></div>
+<div id="leftSide">
+<h2>
+	Team I: <font id="team1"></font><br />
+	Team II: <font id="team2"></font><br /><br />
+	Current trump: <font id="currentTrump"></font> <br /><br />
+	Next move: <font id="nextMove"></font> <br /><br /><br />
+	Intermediate scores:<br /><br />
+	Team I: <font id="team1Points"></font><br />
+	Team II: <font id="team2Points"></font><br /><br />
+	Total scores:<br /><br /><br />
+	Team I: <font id="team1Scores"></font>&nbsp;
+			<img class="sixes" id="sixOpen1" src="cart_images/6heart.png"></img>
+			<img class="sixes" id="sixBack1" src="back.png" style="left: -43px"></img><br /><br /><br />
+	Team II: <font id="team2Scores"></font>&nbsp;
+			<img class="sixes" id="sixOpen2" src="cart_images/6spade.png"></img>
+			<img class="sixes" id="sixBack2" src="back.png" style="left: -43px"></img><br />
+</h2>
+</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+completed rules:
+
+1) 32 cards
+2) 4 players
+3) each player is dealt 8 cards
+4) top player starts the game***
+5) trump suit is clubs by default at the start of the game
+6) after first trick, each player assigned his own trump suit
+7) each player should play card with same suit as the first played one, unless he has no card with such a suit
+8) Jacks are always tretaed as trumps
+
+rules to be completed:
+1) 

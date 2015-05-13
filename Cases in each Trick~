@@ -1,0 +1,42 @@
+Cases in each Trick:
+
+1. all 4 cards have same suit
+
+2. one of the cards have different suit:
+	2.1. it has trump suit (or Jack)
+	2.2. it hasnt trump suit
+
+3. more than one card have different suit:
+	3.1. they all have trump suit (or Jack)
+	3.2. none of them have trump suit
+	3.3. one of them have trump suit 
+	3.4. several of them have trump suit (or Jack)
+
+Sloution:
+
+1. plain comparison
+
+2. 
+	2.1. it's the biggest
+	2.2. it's the smallest
+
+3.
+	3.1. plain comparison
+	3.2. they all are the smallest
+	3.3. it's the biggest
+	3.4. plain comparison
+
+7	=0;
+8	=0;
+9	=0;
+10	=10;
+J(11)	=2;
+Q(12)	=3;
+K(13)	=4;
+A(14)	=11;
+
+Idea:
+1) create an array of those which are the right suit and those which arent the right suit. 
+2) then process the second array:
+	if there is trump, then forget about first array. 
+	if there is no trump, then forget about the second array and process the first array.

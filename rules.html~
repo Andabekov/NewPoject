@@ -1,0 +1,89 @@
+<html>
+<head>
+	<title>Rules</title>
+	<link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+<div id="container">
+	<header id="top_header">
+		<h1>Welcome to the First official website of Card Game BELKA</h1>
+	</header>
+	
+	<nav id="nav_bar">
+		<ul>
+			<li class="nav_li"><a href="index.html">Home</a></li>
+			<li class="nav_li"><a href="rules.html">Rules</a></li>
+			<li class="nav_li"><a href="index.html">Contact Us</a></li>
+		</ul>
+	</nav>
+	
+	<section id="main_section">
+		<article>
+			<header>
+				<hgroup>
+					<h1>The Rules of Belka</h1>
+				</hgroup>
+			</header>
+			<p>
+				Number of decks: 1<br />
+				Number of cards in the deck: 36<br />
+				Number of Players: 4 <br />
+				The cards: 7, 8, 9, 10, Jack, Queen, King, Ace.<br />
+				(Note: 6s serve as a reference for scoring. Jacks are always trump cards and seniority is determined by suit:
+				diamonds, hearts, spades, and clubs.)
+			</p>
+			<p>
+				The goal:<br />
+				To win the game in one of two ways:
+				1. to collect 12 points in the game
+				2. pick up all the cards in the hand/distribution (this is called "paupers" or "naked")
+			</p>
+			<p>
+				Rules of the game:<br />
+				Players play in two pairs (teams). The companions sit opposite to each other. In the first hand deliverer is
+				determined randomly. After that, deliverer changes clockwise.
+				The deck must be shuffled carefully, and each player must be dealt 8 cards face down on the two cards at
+				once counter-clockwise.
+				After the cards are dealt, trump suit is determined by the hand. In the first hand the trump suit is always a
+				Club. In the next hand, trump suit is determined as follows: after the first hand played identify and remember the
+				player who had Jack of Clubs and that player is given a suit of Clubs, whereas the player who sits to the right of
+				him is assigned to Hearts, the player in front of him is assigned Spades, and player on the left of him is assigned
+				Diamonds. In the next hand, a player who will baptize Jack of Clubs is obliged to inform other players about it
+				and trump suit is determined by the suit assigned to him at first hand.
+				The first move belongs to the player who sits to the right of the deliverer, and he has the right to go to
+				any card. His card determines the suit of the drawing. All players take off on one card. They must put the map
+				same suit, if there is no map of the suit, the player may discard any card:
+				1) not a trump suit: whoever has the highest card gets the drawing
+				2) trump suit (Jacks always belong to the current trump suit): player gets the drawing, unless there is
+				another card with trump suit was played. In the latter case, the drawing goes to highest card owner among them.
+				Then determined by the player who takes a bribe, the same player has the right to start the next rally.
+				After eight draws, where players will be left at the hands of cards, count the number of points in the hand.
+			</p>
+			<p>
+				The cost of cards in glasses:<br />
+				Ace - 11 points;<br />
+				10 - 10 points;<br />
+				King - 4 points;<br />
+				Queen - 3 points;<br />
+				Jack - 2 points;<br />
+				7, 8, 9 - nothing.<br />
+			</p>
+			<p>
+				The total number of points of all the cards 120. The number of points in the party and the number of
+				points in each hand is different. A team which scored between 61 and 90 points in the hand, opens up a point in
+				the party, if scored from 91 to 119 points exclusively, it opens up 2 points. If a team gained 120 points in the
+				hand and took all the bribes (this is referred to as "paupers"), the game is won, otherwise also added 2 points. If
+				a team gained 60 points, the points are not added in the party.
+			</p>
+		</article>
+	</section>
+	
+	<footer id="the_footer">
+		Copyright &copy Abu Andabekov 2012-2022
+	</footer>
+	
+</div>
+
+	
+</body>
+</html>
